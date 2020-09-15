@@ -22,9 +22,29 @@ Amplify.configure({
 function App() {
   var result1;
   var err1;
-      Storage.put('test.txt', 'Hello')
-    .then (result => {result1=result;console.log(result)}) // {key: "test.txt"}
-    .catch(err => {err1=err;console.log(err)});
+  var upload;
+    try{
+    upload = Storage.put('test.txt', 'Private Content', {
+        level: 'private',
+        contentType: 'text/plain'
+    })
+    .then (result => {result1 = result})
+    .catch(err => {err1 = err});
+} catch (e) {
+    err1 = e.message;
+  }
+    var promise = upload.promise();
+
+  promise.then(
+    function(data) {
+      result1 = "Successfully uploaded video.";
+      
+     // viewS3(albumName);
+    },
+    function(err) {
+      return err1 = err;
+    }
+  );
     
 class S3_Log extends React.Component {
   render() {
