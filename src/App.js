@@ -20,16 +20,18 @@ Amplify.configure({
     }
 });
 function App() {
+  var result1;
+  var err1;
       Storage.put('test.txt', 'Hello')
-    .then (result => console.log(result)) // {key: "test.txt"}
-    .catch(err => console.log(err));
+    .then (result => {result1=result;console.log(result)}) // {key: "test.txt"}
+    .catch(err => {err1=err;console.log(err)});
     
-class Car extends React.Component {
+class S3_Log extends React.Component {
   render() {
-    return <h2>Hi, I am a Car!</h2>;
+    return <h2>Err is {this.props.err} and Result is {this.props.result}!</h2>;
   }
 }
-
+ 
 
   return (
     <div className="App">
@@ -38,7 +40,7 @@ class Car extends React.Component {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        ReactDOM.render(<Car />, document.getElementById('root'));
+         <S3_Log err={err1} result={result1} />
         <a
           className="App-link"
           href="https://reactjs.org"
