@@ -30,7 +30,7 @@ class Car extends React.Component {
   }
 }
 
-ReactDOM.render(<Car />, document.getElementById('root'));
+
   return (
     <div className="App">
       <header className="App-header">
@@ -38,6 +38,7 @@ ReactDOM.render(<Car />, document.getElementById('root'));
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        ReactDOM.render(<Car />, document.getElementById('root'));
         <a
           className="App-link"
           href="https://reactjs.org"
