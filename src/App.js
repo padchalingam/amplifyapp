@@ -22,6 +22,12 @@ function App() {
       Storage.put('test.txt', 'Hello')
     .then (result => console.log(result)) // {key: "test.txt"}
     .catch(err => console.log(err));
+    var Hello = React.createClass({
+    render: function() {
+        var targetOfGreeting = "world";
+        return <div>Hello, { targetOfGreeting }!</div>;
+    }
+});
   return (
     <div className="App">
       <header className="App-header">
