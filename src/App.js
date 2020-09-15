@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
+import ReactDOM from 'react-dom';
 //import awsconfig from './aws-exports';
 //Amplify.configure(awsconfig);
 Amplify.configure({
@@ -22,12 +23,14 @@ function App() {
       Storage.put('test.txt', 'Hello')
     .then (result => console.log(result)) // {key: "test.txt"}
     .catch(err => console.log(err));
-    var Hello = React.createClass({
-    render: function() {
-        var targetOfGreeting = "world";
-        return <div>Hello, { targetOfGreeting }!</div>;
-    }
-});
+    
+class Car extends React.Component {
+  render() {
+    return <h2>Hi, I am a Car!</h2>;
+  }
+}
+
+ReactDOM.render(<Car />, document.getElementById('root'));
   return (
     <div className="App">
       <header className="App-header">
