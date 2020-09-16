@@ -1,10 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Async from 'react-async';
 import logo from './logo.svg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
 //import awsconfig from './aws-exports';
 //Amplify.configure(awsconfig);
+
+const S3ImageUpload = () => {
+  const onChange = async (file) => {
+    const { key } = await Storage.put('example.png', file, {
+      contentType: 'image/png'
+    })
+
+    console.log('S3 Object key', key)
+  }
+
+  return (
+    <input
+      type='file'
+      accept='image/png'
+      onChange={(e) => onChange(e.target.files[0])}
+    />
+  )
+}
+/*
+class App extends Component {
+  componentDidMount() {    
+    
+  }
+  render () {
+    return (
+      <div className="App">
+      
+      </div>
+      );
+  }
+}
 Amplify.configure({
     Auth: {
         identityPoolId: 'us-east-1:2494fd80-9a3b-419e-b689-049db34eb789', //REQUIRED - Amazon Cognito Identity Pool ID
@@ -115,3 +147,4 @@ async function App() {
 }
 
 export default App;
+*/
