@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 //Amplify.configure(awsconfig);
 Amplify.configure({
     Auth: {
-        identityPoolId: 'us-east-1:2ea6f0d8-fe33-43d4-8f45-445572915f1c', //REQUIRED - Amazon Cognito Identity Pool ID
+        identityPoolId: 'us-east-1:2494fd80-9a3b-419e-b689-049db34eb789', //REQUIRED - Amazon Cognito Identity Pool ID
         region: 'us-east-1', // REQUIRED - Amazon Cognito Region
        // userPoolId: 'XX-XXXX-X_abcd1234', //OPTIONAL - Amazon Cognito User Pool ID
         //userPoolWebClientId: 'XX-XXXX-X_abcd1234', //OPTIONAL - Amazon Cognito Web Client ID
