@@ -89,11 +89,7 @@ async function App() {
   );
   */
     
-class S3_Log extends React.Component {
-  render() {
-    return <h2>Err is {this.props.err} and Result is {this.props.result}!</h2>;
-  }
-}
+
  
 
   return (
@@ -103,7 +99,7 @@ class S3_Log extends React.Component {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-         <S3_Log err={err1} result={result1} />
+          
         <a
           className="App-link"
           href="https://reactjs.org"
