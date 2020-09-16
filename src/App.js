@@ -19,12 +19,12 @@ Amplify.configure({
         }
     }
 });
-function App() {
+async function App() {
   var result1;
   var err1;
   var upload;
     try{
-    upload = Storage.put('test.txt', 'Private Content', {
+    upload = await Storage.put('test.txt', 'Private Content', {
         level: 'private',
         contentType: 'text/plain'
     })
@@ -33,6 +33,7 @@ function App() {
 } catch (e) {
     err1 = e.message;
   }
+  /*
     var promise = upload.promise();
 
   promise.then(
@@ -86,6 +87,7 @@ function App() {
   );
     }
   );
+  */
     
 class S3_Log extends React.Component {
   render() {
