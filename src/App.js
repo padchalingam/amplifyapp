@@ -37,12 +37,53 @@ function App() {
 
   promise.then(
     function(data) {
+      err1 = "no errors";
       result1 = "Successfully uploaded video.";
-      
+        return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+         <S3_Log err={err1} result={result1} />
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn Reactddd
+        </a>
+        <h1>Hello from Prabha</h1>
+      </header>
+    </div>
+  );
      // viewS3(albumName);
     },
     function(err) {
-      return err1 = err;
+      err1 = err;
+      result1 = "upload failed";
+        return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+         <S3_Log err={err1} result={result1} />
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn Reactddd
+        </a>
+        <h1>Hello from Prabha</h1>
+      </header>
+    </div>
+  );
     }
   );
     
