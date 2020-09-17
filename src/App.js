@@ -37,7 +37,7 @@ class App extends Component {
   });
     promise.then(
   result =>{ alert("Uploaded. Wait for censoring"); return}, // doesn't run
-  error => { alert("upload failed "); return} // shows "Error: Whoops!" after 1 second
+  error => { alert("upload failed"); return} // shows "Error: Whoops!" after 1 second
 );
   }
    
