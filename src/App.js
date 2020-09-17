@@ -24,10 +24,10 @@ Amplify.configure({
 });
 function Store_S3(filename,content){
     return new Promise((resolve, reject) => {
-    Storage.put(filename, content, {
+    resolve(Storage.put(filename, content, {
         level: 'private',
         contentType: 'text/plain'
-    });
+    }));
   });
 }
 async function App() {
