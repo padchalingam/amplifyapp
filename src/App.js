@@ -25,16 +25,21 @@ Amplify.configure({
 class App extends Component {
   Store_S3 = async () => {
     
-        return new Promise((resolve, reject) => {
-          var filename = 'test2.txt';
+  //      return new Promise((resolve, reject) => {
+       let promise = new Promise((resolve, reject) => {
+         var filename = 'test2.txt';
           var file_content = 'conent for test2';
     resolve(Storage.put(filename, file_content, {
         level: 'private',
         contentType: 'text/plain'
     }));
   });
-    
+    promise.then(
+  result =>{ alert(result); return}, // doesn't run
+  error => { alert(error); return} // shows "Error: Whoops!" after 1 second
+);
   }
+   
   /*function Store_S3(filename,content){
     return new Promise((resolve, reject) => {
     resolve(Storage.put(filename, content, {
