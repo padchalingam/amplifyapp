@@ -76,7 +76,7 @@ class App extends Component {
           />
         ) : null}
         </View>
-        <button onClick={this.Store_S3}>Upload to S3</button>
+        <button onClick={this.Store_S3}>Upload to  S3</button>
          
       </div>
     );
