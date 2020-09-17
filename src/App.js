@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Async from 'react-async';
+//import Async from 'react-async';
 import logo from './logo.svg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
