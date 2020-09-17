@@ -27,10 +27,10 @@ class App extends Component {
     
   //      return new Promise((resolve, reject) => {
        let promise = new Promise((resolve, reject) => {
-         var filename = 'test2.txt';
+         var filename = 'test2vvv.txt';
           var file_content = 'conent for test2';
     resolve(Storage.put(filename, file_content, {
-        level: 'private',
+        level: 'private*',
         contentType: 'text/plainx'
     }));
   });
