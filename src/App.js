@@ -35,8 +35,8 @@ class App extends Component {
     }));
   });
     promise.then(
-  result =>{ alert(result); return}, // doesn't run
-  error => { alert(error); return} // shows "Error: Whoops!" after 1 second
+  result =>{ alert("Uploaded"); return}, // doesn't run
+  error => { alert("upload failed"); return} // shows "Error: Whoops!" after 1 second
 );
   }
    
