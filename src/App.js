@@ -4,8 +4,8 @@ import logo from './logo.svg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
+//import awsconfig from './aws-exports';
+//Amplify.configure(awsconfig);
  
  
 Amplify.configure({
