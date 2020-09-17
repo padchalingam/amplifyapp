@@ -32,7 +32,7 @@ function Store_S3(filename,content){
 }
 async function App() {
   try {
-    const msg = await Store_S3('test1.txt','content for the file test1.txt');
+    const msg = await Store_S3('test1.txt','content cfor the file test1.txt');
       return (
     <div className="App">
       <header className="App-header">
