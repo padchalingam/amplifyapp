@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
-import { StyleSheet, ActivityIndicator, View } from 'react-native';
+//import { StyleSheet, ActivityIndicator, View } from 'react-native';
 //import Spinner from 'react-native-loading-spinner-overlay';
 //import awsconfig from './aws-exports';
 //Amplify.configure(awsconfig);
@@ -66,16 +66,7 @@ class App extends Component {
       <div className="App">
         
         <p> Click a button </p>
-              <View>
-         
-        {this.state.visible ? (
-          <ActivityIndicator
-            color="#009688"
-            size="large"
-           // style={styles.ActivityIndicatorStyle}
-          />
-        ) : null}
-        </View>
+ 
         <button onClick={this.Store_S3}>Upload to  S3</button>
          
       </div>
