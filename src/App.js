@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
-import Spinner from 'react-native-loading-spinner-overlay';
+//import Spinner from 'react-native-loading-spinner-overlay';
 //import awsconfig from './aws-exports';
 //Amplify.configure(awsconfig);
  
@@ -61,7 +61,7 @@ class App extends Component {
   componentDidMount() {
     setInterval(() => {
       this.setState({
-        spinner: !this.state.spinner
+      ///  spinner: !this.state.spinner
       });
     }, 3000);
   }
