@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
+import Spinner from 'react-native-loading-spinner-overlay';
 //import awsconfig from './aws-exports';
 //Amplify.configure(awsconfig);
  
@@ -17,7 +18,7 @@ Amplify.configure({
     },
     Storage: {
         AWSS3: {
-            bucket: 'videobucketsprabhad', //REQUIRED -  Amazon S3 bucket name
+            bucket: 'videobucketsprabha', //REQUIRED -  Amazon S3 bucket name
             region: 'us-east-1', //OPTIONAL -  Amazon service region
         }
     }
@@ -35,7 +36,7 @@ class App extends Component {
     }));
   });
     promise.then(
-  result =>{ alert("Uploaded"); return}, // doesn't run
+  result =>{ alert("Uploaded. Wait for censoring"); return}, // doesn't run
   error => { alert("upload failed"); return} // shows "Error: Whoops!" after 1 second
 );
   }
@@ -53,6 +54,17 @@ class App extends Component {
  // listQuery = async () => {
   //  const msg = await Store_S3('test1.txt','content cfor the file test1.txt');
   //}
+  state = {
+    spinner: false
+  };
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        spinner: !this.state.spinner
+      });
+    }, 3000);
+  }
     render() {
     return (
       <div className="App">
