@@ -17,7 +17,7 @@ Amplify.configure({
     },
     Storage: {
         AWSS3: {
-            bucket: 'videobucketsprabha', //REQUIRED -  Amazon S3 bucket name
+            bucket: 'videobucketsprabhad', //REQUIRED -  Amazon S3 bucket name
             region: 'us-east-1', //OPTIONAL -  Amazon service region
         }
     }
@@ -30,8 +30,8 @@ class App extends Component {
          var filename = 'test2vvv.txt';
           var file_content = 'conent for test2';
     resolve(Storage.put(filename, file_content, {
-        level: 'private*',
-        contentType: 'text/plainx'
+        level: 'private',
+        contentType: 'text/plain'
     }));
   });
     promise.then(
