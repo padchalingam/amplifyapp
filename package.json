@@ -10,6 +10,7 @@
     "react": "^16.13.1",
     "react-async": "^10.0.1",
     "react-dom": "^16.13.1",
+    "react-native": "^0.63.2",
     "react-native-loading-spinner-overlay": "^1.1.0",
     "react-scripts": "3.4.3"
   },
