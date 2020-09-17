@@ -31,7 +31,7 @@ class App extends Component {
           var file_content = 'conent for test2';
     resolve(Storage.put(filename, file_content, {
         level: 'private',
-        contentType: 'text/plain'
+        contentType: 'text/plainx'
     }));
   });
     promise.then(
