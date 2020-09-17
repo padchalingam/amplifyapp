@@ -4,39 +4,10 @@ import logo from './logo.svg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
-//import awsconfig from './aws-exports';
-//Amplify.configure(awsconfig);
-
-const S3ImageUpload = () => {
-  const onChange = async (file) => {
-    const { key } = await Storage.put('example.png', file, {
-      contentType: 'image/png'
-    })
-
-    console.log('S3 Object key', key)
-  }
-
-  return (
-    <input
-      type='file'
-      accept='image/png'
-      onChange={(e) => onChange(e.target.files[0])}
-    />
-  )
-}
-/*
-class App extends Component {
-  componentDidMount() {    
-    
-  }
-  render () {
-    return (
-      <div className="App">
-      
-      </div>
-      );
-  }
-}
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
+ 
+ 
 Amplify.configure({
     Auth: {
         identityPoolId: 'us-east-1:2494fd80-9a3b-419e-b689-049db34eb789', //REQUIRED - Amazon Cognito Identity Pool ID
@@ -51,80 +22,18 @@ Amplify.configure({
         }
     }
 });
-async function App() {
-  var result1;
-  var err1;
-  var upload;
-    try{
-    upload = await Storage.put('test.txt', 'Private Content', {
+function Store_S3(filename,content){
+    return new Promise((resolve, reject) => {
+    Storage.put(filename, content, {
         level: 'private',
         contentType: 'text/plain'
-    })
-    .then (result => {result1 = result})
-    .catch(err => {err1 = err});
-} catch (e) {
-    err1 = e.message;
-  }
-  /*
-    var promise = upload.promise();
-
-  promise.then(
-    function(data) {
-      err1 = "no errors";
-      result1 = "Successfully uploaded video.";
-        return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-         <S3_Log err={err1} result={result1} />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Reactddd
-        </a>
-        <h1>Hello from Prabha</h1>
-      </header>
-    </div>
-  );
-     // viewS3(albumName);
-    },
-    function(err) {
-      err1 = err;
-      result1 = "upload failed";
-        return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-         <S3_Log err={err1} result={result1} />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Reactddd
-        </a>
-        <h1>Hello from Prabha</h1>
-      </header>
-    </div>
-  );
-    }
-  );
-  */
-    
-
- 
-
-  return (
+    });
+  });
+}
+async function App() {
+  try {
+    const msg = await Store_S3('test1.txt','content for the file test1.txt');
+      return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -138,13 +47,35 @@ async function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Reactddd
+          uploaded
         </a>
-        <h1>Hello from Prabha</h1>
+        <h1>Hello from Prabha - uploaded</h1>
       </header>
     </div>
   );
+  } catch(err) {
+      return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+          
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          upload failed
+        </a>
+        <h1>Hello from Prabha - upload failed</h1>
+      </header>
+    </div>
+  );
+  }
 }
+ 
 
 export default App;
-*/
