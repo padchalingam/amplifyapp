@@ -25,6 +25,24 @@ Amplify.configure({
     }
 });
 class App extends Component {
+   constructor(props) {
+     this.promise1 = this.promise1.bind(this);
+     this.promise2 = this.promise2.bind(this);
+     this.promise3 = this.promise3.bind(this);
+   }
+  
+  promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 500, 'one');
+});
+
+promise2 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'two');
+});
+promise3 = new Promise.race([promise1, promise2]).then((value) => {
+  alert("value is"+value);
+  //console.log(value);
+  // Both resolve, but promise2 is faster
+});
   Store_S3 = async () => {
     
   //      return new Promise((resolve, reject) => {
@@ -37,7 +55,7 @@ class App extends Component {
     }));
   });
     promise.then(
-  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });return}, // doesn't run
+  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });this.promise3;return}, // doesn't run
   error => { alert("upload failed");this.setState({ visible: false }); return} // shows "Error: Whoops!" after 1 second
 );
   }
