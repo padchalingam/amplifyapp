@@ -29,8 +29,8 @@ class App extends Component {
    constructor(props) {
         super(props);
     this.state = { visible: false };
-     this.promise1 = this.promise1.bind(this);
-     this.promise2 = this.promise2.bind(this);
+   //  this.promise1 = this.promise1.bind(this);
+    // this.promise2 = this.promise2.bind(this);
      
    }
   
