@@ -45,9 +45,10 @@ promise2 = new Promise((resolve, reject) => {
 });
 
   Choose_video_file = async () => {
+    alert("filechosen");
     this.fileHandle = await window.chooseFileSystemEntries();
     this.file = await this.fileHandle.getFile();
-    alert("filename is"+this.file.name)
+    alert("filename is"+this.file.name);
   }
  
   Store_S3 = async () => {
