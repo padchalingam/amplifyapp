@@ -38,7 +38,7 @@ class App extends Component {
   });
     promise.then(
   result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: false });return}, // doesn't run
-  error => { alert("upload failed"); return} // shows "Error: Whoops!" after 1 second
+  error => { alert("upload failed");this.setState({ visible: true }); return} // shows "Error: Whoops!" after 1 second
 );
   }
    
@@ -67,14 +67,8 @@ class App extends Component {
         
         <p> Click a button </p>
         {this.state.visible ? (
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          upload failed
-        </a>
+        <img src={logo} className="App-logo" alt="logo" />
+         
   ) : null}
         <button onClick={this.Store_S3}>Upload to  S3</button>
          onLoad={() => this.setState({ visible: false })}
