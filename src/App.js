@@ -41,9 +41,7 @@ class App extends Component {
 promise2 = new Promise((resolve, reject) => {
   setTimeout(resolve, 100, 'two');
 });
-promise3 = new Promise.race([this.promise1, this.promise2]).then((value) => {
-  alert("value is"+value);
-});
+ 
   Store_S3 = async () => {
     
   //      return new Promise((resolve, reject) => {
@@ -58,8 +56,7 @@ promise3 = new Promise.race([this.promise1, this.promise2]).then((value) => {
     promise.then(
   result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });Promise.race([this.promise1, this.promise2]).then((value) => {
   alert("value is"+value);
-});
-  this.promise3;return}, // doesn't run
+});return}, // doesn't run
   error => { alert("upload failed");this.setState({ visible: false }); return} // shows "Error: Whoops!" after 1 second
 );
   }
