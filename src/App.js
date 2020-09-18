@@ -29,6 +29,8 @@ class App extends Component {
    constructor(props) {
         super(props);
     this.state = { visible: false };
+    this.filehandle = null;
+    this.file = null;
    //  this.promise1 = this.promise1.bind(this);
     // this.promise2 = this.promise2.bind(this);
      
@@ -41,6 +43,12 @@ class App extends Component {
 promise2 = new Promise((resolve, reject) => {
   setTimeout(resolve, 100, 'two');
 });
+
+  Choose_video_file = async () => {
+    this.fileHandle = await window.chooseFileSystemEntries();
+    this.file = await this.fileHandle.getFile();
+    alert("filename is"+this.fil.fileName)
+  }
  
   Store_S3 = async () => {
     
@@ -87,6 +95,7 @@ promise2 = new Promise((resolve, reject) => {
         <img src={logo} className="App-logo" alt="logo" />
          
   ) : null}
+        <button id="choose_file" onClick={this.Choose_video_file}>Choose Video File</button>
         <button onClick={this.Store_S3}>Upload to  S3</button>
          
       </div>
