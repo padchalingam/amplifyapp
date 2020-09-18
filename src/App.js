@@ -29,18 +29,18 @@ class App extends Component {
    constructor(props) {
         super(props);
     this.state = { visible: false };
-   //  this.promise1 = this.promise1.bind(this);
-   //  this.promise2 = this.promise2.bind(this);
+     this.promise1 = this.promise1.bind(this);
+     this.promise2 = this.promise2.bind(this);
      
    }
   
- // promise1 = new Promise((resolve, reject) => {
-//  setTimeout(resolve, 500, 'one');
-//});
+  promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 500, 'one');
+});
 
-//promise2 = new Promise((resolve, reject) => {
-//  setTimeout(resolve, 100, 'two');
-//});
+promise2 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'two');
+});
  
   Store_S3 = async () => {
     
