@@ -37,8 +37,8 @@ class App extends Component {
     }));
   });
     promise.then(
-  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: false });return}, // doesn't run
-  error => { alert("upload failed");this.setState({ visible: true }); return} // shows "Error: Whoops!" after 1 second
+  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });return}, // doesn't run
+  error => { alert("upload failed");this.setState({ visible: false }); return} // shows "Error: Whoops!" after 1 second
 );
   }
    
@@ -57,7 +57,7 @@ class App extends Component {
   //}
   constructor(props) {
     super(props);
-    this.state = { visible: true };
+    this.state = { visible: false };
   }
 
  
@@ -71,7 +71,7 @@ class App extends Component {
          
   ) : null}
         <button onClick={this.Store_S3}>Upload to  S3</button>
-         onLoad={() => this.setState({ visible: false })}
+         
       </div>
     );
   }
