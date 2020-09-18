@@ -55,7 +55,7 @@ promise2 = new Promise((resolve, reject) => {
   });
     promise.then(
   result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });
-  Promise.race([this.promise1, this.promise2]).then((value) => {
+  Promise.race([this.promise2, this.promise1]).then((value) => {
   alert("value is"+value);});
   return}, // doesn't run
   error => { alert("upload failed");this.setState({ visible: false }); return} // shows "Error: Whoops!" after 1 second
