@@ -25,7 +25,10 @@ Amplify.configure({
     }
 });
 class App extends Component {
+
    constructor(props) {
+        super(props);
+    this.state = { visible: false };
      this.promise1 = this.promise1.bind(this);
      this.promise2 = this.promise2.bind(this);
      this.promise3 = this.promise3.bind(this);
@@ -38,7 +41,7 @@ class App extends Component {
 promise2 = new Promise((resolve, reject) => {
   setTimeout(resolve, 100, 'two');
 });
-promise3 = new Promise.race([promise1, promise2]).then((value) => {
+promise3 = new Promise.race([this.promise1, this.promise2]).then((value) => {
   alert("value is"+value);
   //console.log(value);
   // Both resolve, but promise2 is faster
@@ -73,10 +76,7 @@ promise3 = new Promise.race([promise1, promise2]).then((value) => {
  // listQuery = async () => {
   //  const msg = await Store_S3('test1.txt','content cfor the file test1.txt');
   //}
-  constructor(props) {
-    super(props);
-    this.state = { visible: false };
-  }
+   
 
  
     render() {
