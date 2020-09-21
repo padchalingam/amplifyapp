@@ -47,6 +47,7 @@ promise2 = new Promise((resolve, reject) => {
   onChange(e) {
     this.setState({file:e.target.files[0]})}
   
+  
  
  
   Store_S3 = async () => {
@@ -54,7 +55,8 @@ promise2 = new Promise((resolve, reject) => {
   //      return new Promise((resolve, reject) => {
        let promise = new Promise((resolve, reject) => {
          var filename = 'test2vvv.txt';
-          var file_content = 'conent for test2';
+          //var file_content = 'conent for test2';
+           var file_content = this.state.file;
     resolve(Storage.put(filename, file_content, {
         level: 'private',
         contentType: 'text/plain'
