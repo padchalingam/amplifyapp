@@ -59,7 +59,7 @@ promise2 = new Promise((resolve, reject) => {
            var file_content = this.state.file;
     resolve(Storage.put(filename, file_content, {
         level: 'private',
-        contentType: 'text/plain'
+        contentType: file_content.type
     }));
   });
     promise.then(
