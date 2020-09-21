@@ -45,7 +45,7 @@ promise2 = new Promise((resolve, reject) => {
   setTimeout(resolve, 100, 'two');
 });
   onChange(e) {
-    this.setState({file:e.target.files[0]})
+    this.setState({file:e.target.files[0]})}
   
  
  
