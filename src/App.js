@@ -54,7 +54,7 @@ promise2 = new Promise((resolve, reject) => {
     
   //      return new Promise((resolve, reject) => {
        let promise = new Promise((resolve, reject) => {
-         var filename = 'test2vvv.txt';
+         var filename = this.state.file.name;
           //var file_content = 'conent for test2';
            var file_content = this.state.file;
     resolve(Storage.put(filename, file_content, {
