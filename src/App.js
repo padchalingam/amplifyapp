@@ -42,7 +42,7 @@ class App extends Component {
 });
 
 promise2 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 100, 'two');
+  setTimeout(resolve, 4000, 'two');
 });
   onChange(e) {
     this.setState({file:e.target.files[0]})}
