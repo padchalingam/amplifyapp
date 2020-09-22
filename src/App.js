@@ -36,21 +36,7 @@ class App extends Component {
      
    }
   
-  promise1 = new Promise((resolve, reject) => {
- // setTimeout(resolve, 5000, 'one');
- const id = setTimeout(() => {
-    clearTimeout(id);
-    resolve('timeout!');
-  }, 5000);
-});
-
-promise2 = new Promise((resolve, reject) => {
-  const id = setTimeout(() => {
-    clearTimeout(id);
-    resolve('response!');
-  }, 4000);
- // setTimeout(resolve, 4000, 'two');
-});
+ 
   onChange(e) {
     this.setState({file:e.target.files[0]})}
   
@@ -58,7 +44,22 @@ promise2 = new Promise((resolve, reject) => {
  
  
   Store_S3 = async () => {
-    
+      
+  let promise1 = new Promise((resolve, reject) => {
+ // setTimeout(resolve, 5000, 'one');
+ const id = setTimeout(() => {
+    clearTimeout(id);
+    resolve('timeout!');
+  }, 8000);
+});
+
+let promise2 = new Promise((resolve, reject) => {
+  const id = setTimeout(() => {
+    clearTimeout(id);
+    resolve('response!');
+  }, 4000);
+ // setTimeout(resolve, 4000, 'two');
+});
   //      return new Promise((resolve, reject) => {
        let promise = new Promise((resolve, reject) => {
          var filename = this.state.file.name;
@@ -72,7 +73,7 @@ promise2 = new Promise((resolve, reject) => {
     promise.then(
   result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });
   let race = Promise.race([
-  this.promise2, this.promise1
+  promise1, promise2
 ])
 race.then((res) => alert(res)) // -> Promise A win!
 //  Promise.race([this.promise1, this.promise2]).then((value) => {
