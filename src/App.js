@@ -40,7 +40,7 @@ class App extends Component {
  // setTimeout(resolve, 5000, 'one');
  const id = setTimeout(() => {
     clearTimeout(id);
-    reject('timeout!');
+    resolve('timeout!');
   }, 5000);
 });
 
