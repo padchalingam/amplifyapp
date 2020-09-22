@@ -38,11 +38,19 @@ class App extends Component {
    }
   
   promise1 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 5000, 'one');
+ // setTimeout(resolve, 5000, 'one');
+ const id = setTimeout(() => {
+    clearTimeout(id);
+    reject('timeout!');
+  }, 5000);
 });
 
 promise2 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 4000, 'two');
+  const id = setTimeout(() => {
+    clearTimeout(id);
+    resolve('response!');
+  }, 4000);
+ // setTimeout(resolve, 4000, 'two');
 });
   onChange(e) {
     this.setState({file:e.target.files[0]})}
@@ -64,8 +72,8 @@ promise2 = new Promise((resolve, reject) => {
   });
     promise.then(
   result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });
-  //Promise.race([this.promise1, this.promise2]).then((value) => {
-  // alert("value is"+value);});
+  Promise.race([this.promise1, this.promise2]).then((value) => {
+   alert("value is"+value);});
   return}, // doesn't run
   error => { alert("upload failed");this.setState({ visible: false }); return} // shows "Error: Whoops!" after 1 second
 );
