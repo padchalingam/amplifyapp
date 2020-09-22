@@ -47,7 +47,7 @@ class App extends Component {
       result.Body.text().then(string => { 
         //alert(string)
         let contents = JSON.parse(string);
-        this.set.time_array = contents['list'];
+        this.state.time_array = contents['list'];
         this.state.vid_visible = true;
         
       });
