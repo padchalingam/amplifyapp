@@ -48,7 +48,8 @@ class App extends Component {
         //alert(string)
         let contents = JSON.parse(string);
         this.state.time_array = contents['list'];
-        this.state.vid_visible = true;
+        
+        this.setState({ vid_visible: true });
         
       });
     //    alert(string))
