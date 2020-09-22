@@ -72,7 +72,7 @@ promise2 = new Promise((resolve, reject) => {
     promise.then(
   result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });
   let race = Promise.race([
-  this.promise1, this.promise2
+  this.promise2, this.promise1
 ])
 race.then((res) => alert(res)) // -> Promise A win!
 //  Promise.race([this.promise1, this.promise2]).then((value) => {
