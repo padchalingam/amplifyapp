@@ -28,7 +28,7 @@ class App extends Component {
 
    constructor(props) {
         super(props);
-    this.state = { visible: false, file:null, time_array:null, vid:null };
+    this.state = { visible: false, file:null, time_array:null, vid_visible:false };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this)
@@ -44,7 +44,13 @@ class App extends Component {
  retrieveTC_json(){
  Storage.get('CV_TimeInterval.json', { download: true })
     .then(result => {
-      result.Body.text().then(string => { alert(string)});
+      result.Body.text().then(string => { 
+        //alert(string)
+        let contents = JSON.parse(string);
+        this.set.time_array = contents['list'];
+        this.set.vid_visible = true;
+        
+      });
     //    alert(string))
   // handle the String data return String 
 
@@ -134,7 +140,9 @@ race.then((res) => alert(res)) // -> Promise A win!
    
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
+        {this.set.vid_visible ? (
         <video id="vid"    width="640" height="352" controls/>
+        ) : null}
          
       </div>
     );
