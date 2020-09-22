@@ -32,8 +32,8 @@ class App extends Component {
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this)
-   //  this.promise1 = this.promise1.bind(this);
-    // this.promise2 = this.promise2.bind(this);
+     this.promise1 = this.promise1.bind(this);
+     this.promise2 = this.promise2.bind(this);
      
    }
   
