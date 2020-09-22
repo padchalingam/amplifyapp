@@ -49,7 +49,7 @@ class App extends Component {
       alert(json_content);
 //let contents = JSON.parse(json_content);
  //this.set.time_array = contents['list'];
-this.set.vid.style.display = "block";alert(this.set.time_array)
+//this.set.vid.style.display = "block";alert(this.set.time_array)
 })
     .catch(err => console.log(err));
  
