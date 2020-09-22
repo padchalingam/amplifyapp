@@ -28,7 +28,7 @@ class App extends Component {
 
    constructor(props) {
         super(props);
-    this.state = { visible: false, file:null, time_array:null, vid_visible:false };
+    this.state = { visible: false, file:null, time_array:null, vid_visible:true };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this)
