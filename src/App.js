@@ -44,9 +44,12 @@ class App extends Component {
  retrieveTC_json(){
  Storage.get('CV_TimeInterval.json', { download: true })
     .then(result => {
-      
-      let json_content = result.Body.text();
-      alert(json_content);
+      result.Body.text().then(string => { alert(string)});
+    //    alert(string))
+  // handle the String data return String 
+
+     // let json_content = result.Body.text();
+     // alert(json_content);
 //let contents = JSON.parse(json_content);
  //this.set.time_array = contents['list'];
 //this.set.vid.style.display = "block";alert(this.set.time_array)
