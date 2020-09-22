@@ -48,7 +48,7 @@ class App extends Component {
         //alert(string)
         let contents = JSON.parse(string);
         this.set.time_array = contents['list'];
-        this.set.vid_visible = true;
+        this.state.vid_visible = true;
         
       });
     //    alert(string))
@@ -140,7 +140,7 @@ race.then((res) => alert(res)) // -> Promise A win!
    
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
-        {this.set.vid_visible ? (
+        {this.state.vid_visible ? (
         <video id="vid"    width="640" height="352" controls/>
         ) : null}
          
