@@ -42,13 +42,13 @@ class App extends Component {
   
   
  retrieveTC_json(){
- Storage.get('CV_TimeInterval.json')
+ Storage.get('CV_TimeInterval.json', { download: true })
     .then(result => {
       alert(result);
-     // let json_content = result.Body.toString('utf-8');
-//let contents = JSON.parse(json_content);
- //this.set.time_array = contents['list'];
-//this.set.vid.style.display = "block";alert(this.set.time_array)
+      let json_content = result.Body.toString('utf-8');
+let contents = JSON.parse(json_content);
+ this.set.time_array = contents['list'];
+this.set.vid.style.display = "block";alert(this.set.time_array)
 })
     .catch(err => console.log(err));
  
