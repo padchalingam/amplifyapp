@@ -45,10 +45,11 @@ class App extends Component {
  Storage.get('CV_TimeInterval.json')
     .then(result => {
       alert(result);
-      let json_content = result.Body.toString('utf-8');
-let contents = JSON.parse(json_content);
- this.set.time_array = contents['list'];
-this.set.vid.style.display = "block";alert(this.set.time_array)})
+     // let json_content = result.Body.toString('utf-8');
+//let contents = JSON.parse(json_content);
+ //this.set.time_array = contents['list'];
+//this.set.vid.style.display = "block";alert(this.set.time_array)
+})
     .catch(err => console.log(err));
  
  }
