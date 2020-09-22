@@ -28,7 +28,7 @@ class App extends Component {
 
    constructor(props) {
         super(props);
-    this.state = { visible: false, file:null, time_array:null };
+    this.state = { visible: false, file:null, time_array:null, vid:null };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this)
@@ -41,9 +41,12 @@ class App extends Component {
     this.setState({file:e.target.files[0]})}
   
   
- retrieveTC_json(s3, JasonFname, videoKey){
+ retrieveTC_json(){
  Storage.get('CV_TimeInterval.json')
-    .then(result => alert(result))
+    .then(result => {let json_content = result.Body.toString('utf-8');
+let contents = JSON.parse(json_content);
+ this.set.time_array = contents['list'];
+this.set.vid.style.display = "block";alert(this.set.time_array)})
     .catch(err => console.log(err));
  
  }
@@ -80,7 +83,7 @@ let promise2 = new Promise((resolve, reject) => {
     }));
   });
     promise.then(
-  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });
+  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true }); this.retrieveTC_json();
   //get the time code json from S3
   
 /*
