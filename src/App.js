@@ -48,6 +48,7 @@ class App extends Component {
   let promise1 = new Promise((resolve, reject) => {
  // setTimeout(resolve, 5000, 'one');
  const id = setTimeout(() => {
+    alert("8000");
     clearTimeout(id);
     resolve('timeout!');
   }, 8000);
@@ -55,7 +56,9 @@ class App extends Component {
 
 let promise2 = new Promise((resolve, reject) => {
   const id = setTimeout(() => {
+    alert("4000");
     clearTimeout(id);
+    
     resolve('response!');
   }, 4000);
  // setTimeout(resolve, 4000, 'two');
