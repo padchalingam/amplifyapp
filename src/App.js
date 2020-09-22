@@ -28,7 +28,7 @@ class App extends Component {
 
    constructor(props) {
         super(props);
-    this.state = { visible: false, file:null };
+    this.state = { visible: false, file:null, time_array:null };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this)
@@ -41,10 +41,15 @@ class App extends Component {
     this.setState({file:e.target.files[0]})}
   
   
+ retrieveTC_json(s3, JasonFname, videoKey){
+ Storage.get('CV_TimeInterval.json')
+    .then(result => alert(result))
+    .catch(err => console.log(err));
  
+ }
  
   Store_S3 = async () => {
-      
+    /*  
   let promise1 = new Promise((resolve, reject) => {
  // setTimeout(resolve, 5000, 'one');
  const id = setTimeout(() => {
@@ -55,14 +60,15 @@ class App extends Component {
 });
 
 let promise2 = new Promise((resolve, reject) => {
-  const id = setTimeout(() => {
+  const id2 = setTimeout(() => {
     alert("4000");
-    clearTimeout(id);
+    clearTimeout(id2);
     
     resolve('response!');
   }, 4000);
  // setTimeout(resolve, 4000, 'two');
 });
+*/
   //      return new Promise((resolve, reject) => {
        let promise = new Promise((resolve, reject) => {
          var filename = this.state.file.name;
@@ -75,10 +81,14 @@ let promise2 = new Promise((resolve, reject) => {
   });
     promise.then(
   result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true });
+  //get the time code json from S3
+  
+/*
   let race = Promise.race([
   promise1, promise2
 ])
 race.then((res) => alert(res)) // -> Promise A win!
+*/
 //  Promise.race([this.promise1, this.promise2]).then((value) => {
  //  alert("value is"+value);});
   return}, // doesn't run
@@ -114,6 +124,7 @@ race.then((res) => alert(res)) // -> Promise A win!
    
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
+        <video id="vid"    width="640" height="352" controls/>
          
       </div>
     );
