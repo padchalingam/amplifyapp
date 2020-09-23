@@ -28,7 +28,7 @@ class App extends Component {
 
    constructor(props) {
         super(props);
-    this.state = { visible: false, file:null, time_array:null, vid_visible:true };
+    this.state = { visible: false, file:null, time_array:null, vid_visible:true, vid_url:null };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this)
@@ -39,7 +39,7 @@ class App extends Component {
  
   onChange(e) {
     this.setState({file:e.target.files[0]});
-    let objectURL = window.URL.createObjectURL(e.target.files[0]);
+     this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
     this.file = this.state.file;
   }
   
