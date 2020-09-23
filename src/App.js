@@ -39,6 +39,7 @@ class App extends Component {
  
   onChange(e) {
     this.setState({file:e.target.files[0]});
+    let objectURL = window.URL.createObjectURL(e.target.files[0]);
     this.file = this.state.file;
   }
   
