@@ -46,7 +46,7 @@ class App extends Component {
   		ontimeupdate(event) {
 			// Display the current position of the video in a p element with id="demo"
 			 this.setState({ vid_visible: true });
-        if (this.state.time_arra != null){
+        if (this.state.time_array != null){
  
 		//	if (no_censor_value == false) {
 				for (var i = 0; i < parseInt(this.state.time_array.length); i++) {
