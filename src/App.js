@@ -46,7 +46,7 @@ class App extends Component {
   		ontimeupdate(event) {
 			// Display the current position of the video in a p element with id="demo"
 			 this.setState({ vid_visible: true });
-
+        if (this.state.time_arra != null){
  
 		//	if (no_censor_value == false) {
 				for (var i = 0; i < parseInt(this.state.time_array.length); i++) {
@@ -61,6 +61,7 @@ class App extends Component {
 					}
 
 				}
+  		}
 		//	}
 
  
@@ -168,7 +169,7 @@ race.then((res) => alert(res)) // -> Promise A win!
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
         {this.state.vid_visible ? (
-        <video id="vid" src={ this.state.vid_url}  ontimeupdate={this.ontimeupdate} width="640" height="352" controls/>
+        <video id="vid" src={ this.state.vid_url}  width="640" height="352" controls/>
         ) : null}
          
       </div>
