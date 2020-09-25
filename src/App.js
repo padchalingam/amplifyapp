@@ -29,7 +29,7 @@ class App extends Component {
    constructor(props) {
         super(props);
         
-    this.state = { visible: false, file:null, time_array:null, vid_style:"display: block;", vid_url:null };
+    this.state = { visible: false, file:null, time_array:null, vid_style:'display: block;', vid_url:null };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this);
@@ -48,7 +48,7 @@ class App extends Component {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
 			
-			this.setState({ vid_style: "display: none;" });
+			this.setState({ vid_style: 'display: none;' });
 			let show_video = true;
         if (this.state.time_array != null){
  
@@ -66,7 +66,7 @@ class App extends Component {
 
 				}
   		}
-  	show_video ? this.setState({ vid_style: "display: block;" }): this.setState({ vid_style: "display: none;" });
+  	show_video ? this.setState({ vid_style: 'display: block;' }): this.setState({ vid_style: 'display: none;' });
   		
 		//	}
 
@@ -82,7 +82,7 @@ class App extends Component {
         let contents = JSON.parse(string);
         this.state.time_array = contents['list'];
         
-        this.setState({ vid_style: "display: block;" });
+        this.setState({ vid_style: 'display: block;' });
         
       });
     //    alert(string))
