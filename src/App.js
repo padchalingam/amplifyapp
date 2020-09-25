@@ -48,7 +48,8 @@ class App extends Component {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
 			
-			this.setState({ vid_visible: true });
+			this.setState({ vid_visible: false });
+			let show_video = true;
         if (this.state.time_array != null){
  
 		//	if (no_censor_value == false) {
@@ -56,8 +57,8 @@ class App extends Component {
 
 					if ((e.currentTime > parseFloat(this.state.time_array[i].start))
 							&& (e.currentTime < parseFloat(this.state.time_array[i].end))) {
-					 
-							this.setState({ vid_visible: false });
+					 show_video = false;
+						//	this.setState({ vid_visible: false });
 						 
 
 						break;
@@ -65,6 +66,7 @@ class App extends Component {
 
 				}
   		}
+  	this.setState({ vid_visible: show_video });
   		
 		//	}
 
