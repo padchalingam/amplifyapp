@@ -46,7 +46,7 @@ class App extends Component {
   
   		ontimeupdate(e) {
 			// Display the current position of the video in a p element with id="demo"
-			alert("ontimeupdate");
+			//alert("ontimeupdate");
 			
 			this.setState({ vid_visible: true });
         if (this.state.time_array != null){
