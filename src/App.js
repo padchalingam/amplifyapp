@@ -29,7 +29,7 @@ class App extends Component {
    constructor(props) {
         super(props);
         
-    this.state = { visible: false, file:null, time_array:null, vid_visible:true, vid_url:null };
+    this.state = { visible: false, file:null, time_array:null, vid_style:"display: none;", vid_url:null };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this);
@@ -48,7 +48,7 @@ class App extends Component {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
 			
-			this.setState({ vid_visible: false });
+			this.setState({ vid_style: "display: none;" });
 			let show_video = true;
         if (this.state.time_array != null){
  
@@ -58,7 +58,7 @@ class App extends Component {
 					if ((e.target.currentTime > parseFloat(this.state.time_array[i].start))
 							&& (e.target.currentTime < parseFloat(this.state.time_array[i].end))) {
 					 show_video = false;
-						//	this.setState({ vid_visible: false });
+				
 						 
 
 						break;
@@ -66,7 +66,7 @@ class App extends Component {
 
 				}
   		}
-  	this.setState({ vid_visible: show_video });
+  	show_video ? this.setState({ vid_style: "display: block;" }): this.setState({ vid_style: "display: none;" });
   		
 		//	}
 
@@ -82,7 +82,7 @@ class App extends Component {
         let contents = JSON.parse(string);
         this.state.time_array = contents['list'];
         
-        this.setState({ vid_visible: true });
+        this.setState({ vid_style: "display: none;" });
         
       });
     //    alert(string))
@@ -130,7 +130,7 @@ let promise2 = new Promise((resolve, reject) => {
     }));
   });
     promise.then(
-  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: true }); this.retrieveTC_json();
+  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: false }); this.retrieveTC_json();
   //get the time code json from S3
   
 /*
@@ -174,9 +174,9 @@ race.then((res) => alert(res)) // -> Promise A win!
    
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
-        {this.state.vid_visible ? (
-        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate} width="640" height="352" controls/>
-        ) : null}
+        
+        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate} style={this.state.vid_style} width="640" height="352" controls/>
+        
          
       </div>
     );
