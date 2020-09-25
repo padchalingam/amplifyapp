@@ -169,7 +169,7 @@ race.then((res) => alert(res)) // -> Promise A win!
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
         {this.state.vid_visible ? (
-        <video id="vid" src={ this.state.vid_url} ontimeupdate={this.ontimeupdate} width="640" height="352" controls/>
+        <video id="vid" src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate} width="640" height="352" controls/>
         ) : null}
          
       </div>
