@@ -55,8 +55,8 @@ class App extends Component {
 		//	if (no_censor_value == false) {
 				for (var i = 0; i < parseInt(this.state.time_array.length); i++) {
 
-					if ((e.currentTime > parseFloat(this.state.time_array[i].start))
-							&& (e.currentTime < parseFloat(this.state.time_array[i].end))) {
+					if ((e.target.currentTime > parseFloat(this.state.time_array[i].start))
+							&& (e.target.currentTime < parseFloat(this.state.time_array[i].end))) {
 					 show_video = false;
 						//	this.setState({ vid_visible: false });
 						 
