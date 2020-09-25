@@ -28,6 +28,7 @@ class App extends Component {
 
    constructor(props) {
         super(props);
+        
     this.state = { visible: false, file:null, time_array:null, vid_visible:true, vid_url:null };
     this.filehandle = null;
     this.file = null;
@@ -43,16 +44,18 @@ class App extends Component {
     this.file = this.state.file;
   }
   
-  		ontimeupdate(event) {
+  		ontimeupdate(e) {
 			// Display the current position of the video in a p element with id="demo"
+			alert("ontimeupdate");
+			/*
 			 this.setState({ vid_visible: true });
         if (this.state.time_array != null){
  
 		//	if (no_censor_value == false) {
 				for (var i = 0; i < parseInt(this.state.time_array.length); i++) {
 
-					if ((event.currentTime > parseFloat(this.state.time_array[i].start))
-							&& (event.currentTime < parseFloat(this.state.time_array[i].end))) {
+					if ((e.currentTime > parseFloat(this.state.time_array[i].start))
+							&& (e.currentTime < parseFloat(this.state.time_array[i].end))) {
 					 
 							this.setState({ vid_visible: false });
 						 
@@ -62,6 +65,7 @@ class App extends Component {
 
 				}
   		}
+  		*/
 		//	}
 
  
@@ -154,7 +158,7 @@ race.then((res) => alert(res)) // -> Promise A win!
   //  const msg = await Store_S3('test1.txt','content cfor the file test1.txt');
   //}
    
-
+ 
  
     render() {
     return (
@@ -169,7 +173,7 @@ race.then((res) => alert(res)) // -> Promise A win!
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
         {this.state.vid_visible ? (
-        <video id="vid" src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate} width="640" height="352" controls/>
+        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate} width="640" height="352" controls/>
         ) : null}
          
       </div>
