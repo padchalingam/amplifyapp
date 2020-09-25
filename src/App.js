@@ -32,8 +32,8 @@ class App extends Component {
     this.state = { visible: false, file:null, time_array:null, vid_visible:true, vid_url:null };
     this.filehandle = null;
     this.file = null;
-    this.onChange = this.onChange.bind(this)
-     
+    this.onChange = this.onChange.bind(this);
+    this.ontimeupdate = this.ontimeupdate.bind(this);
      
    }
   
@@ -48,7 +48,7 @@ class App extends Component {
 			// Display the current position of the video in a p element with id="demo"
 			alert("ontimeupdate");
 			
-			//this.setState({ vid_visible: true });
+			this.setState({ vid_visible: true });
         if (this.state.time_array != null){
  
 		//	if (no_censor_value == false) {
