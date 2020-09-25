@@ -82,7 +82,7 @@ class App extends Component {
         let contents = JSON.parse(string);
         this.state.time_array = contents['list'];
         
-        this.setState({ vid_style: "display: none;" });
+        this.setState({ vid_style: "display: block;" });
         
       });
     //    alert(string))
