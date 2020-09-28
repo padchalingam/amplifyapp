@@ -94,7 +94,7 @@ class App extends Component {
         this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
         
       });
- 
+ this.setState({ visible: false }); 
 })
     .catch(err => 
     {
@@ -108,10 +108,10 @@ class App extends Component {
         
         this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
         
-      });
+      }); this.setState({ visible: false }); 
  
 })}).catch(err => {console.log(err)});
-    
+    this.setState({ vid_width: "0", img_width: "128", vid_muted : true, visible: false }); alert ("time out-waited 2 mts for censoring");
     console.log(err);
     });
  
@@ -150,7 +150,7 @@ let promise2 = new Promise((resolve, reject) => {
     }));
   });
     promise.then(
-  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: false }); this.retrieveTC_json();  this.add2MtssDelay();
+  result =>{ alert("Uploaded. Wait for censoring"); this.retrieveTC_json();   
   //get the time code json from S3
   
 /*
