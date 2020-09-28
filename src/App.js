@@ -29,7 +29,7 @@ class App extends Component {
    constructor(props) {
         super(props);
         
-    this.state = { visible: false, file:null, time_array:null, vid_style:'display: block;', vid_url:null };
+    this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_url:null };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this);
@@ -48,7 +48,7 @@ class App extends Component {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
 			
-			this.setState({ vid_style: 'display: none;' });
+			this.setState({ vid_width: "640" });
 			let show_video = true;
         if (this.state.time_array != null){
  
@@ -66,7 +66,7 @@ class App extends Component {
 
 				}
   		}
-  	show_video ? this.setState({ vid_style: 'display: block;' }): this.setState({ vid_style: 'display: none;' });
+  	show_video ? this.setState({ vid_width: "640" }): this.setState({ vid_width: "64" });
   		
 		//	}
 
@@ -82,7 +82,7 @@ class App extends Component {
         let contents = JSON.parse(string);
         this.state.time_array = contents['list'];
         
-        this.setState({ vid_style: 'display: block;' });
+        this.setState({ vid_width: "640" });
         
       });
     //    alert(string))
@@ -175,7 +175,7 @@ race.then((res) => alert(res)) // -> Promise A win!
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
         
-        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate}  width="640" height="352" controls/>
+        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} height="352" controls/>
         
          
       </div>
