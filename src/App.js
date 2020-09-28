@@ -30,7 +30,7 @@ class App extends Component {
    constructor(props) {
         super(props);
         
-    this.state = { visible: false, file:null, time_array:null, vid_width:"640", img_width : "0", vid_url:null };
+    this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this);
@@ -49,7 +49,7 @@ class App extends Component {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
 			
-			this.setState({ vid_width: "640", img_width: "0" });
+			this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
 			let show_video = true;
         if (this.state.time_array != null){
  
@@ -67,7 +67,7 @@ class App extends Component {
 
 				}
   		}
-  	show_video ? this.setState({ vid_width: "640",  img_width: "0" }): this.setState({ vid_width: "0", img_width: "640" });
+  	show_video ? this.setState({ vid_width: "640",  img_width: "0", vid_muted : false }): this.setState({ vid_width: "0", img_width: "64" , vid_muted : true});
   		
 		//	}
 
@@ -83,7 +83,7 @@ class App extends Component {
         let contents = JSON.parse(string);
         this.state.time_array = contents['list'];
         
-        this.setState({ vid_width: "640", img_width: "0" });
+        this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
         
       });
     //    alert(string))
@@ -177,10 +177,10 @@ race.then((res) => alert(res)) // -> Promise A win!
         <button onClick={this.Store_S3}>Upload to  S3</button>
         </p>
         <p>
-        <img src={censr} alt="censor" width={this.state.img_width} height="352" />
+        <img src={censr} alt="censor" width={this.state.img_width} height="35" />
         </p>
         <p>        
-        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} height="352" controls/>
+        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} muted={this.state.muted} height="352" controls/>
         </p>
         
          
