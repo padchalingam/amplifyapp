@@ -35,6 +35,7 @@ class App extends Component {
     this.file = null;
     this.onChange = this.onChange.bind(this);
     this.ontimeupdate = this.ontimeupdate.bind(this);
+    //this.add2MtssDelay = this.add2MtssDelay.bind(this);
      
    }
   
@@ -75,7 +76,14 @@ class App extends Component {
  
 		}
   
+ 
+   wait = (timeout) => {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
  retrieveTC_json(){
+   
  Storage.get('CV_TimeInterval.json', { download: true })
     .then(result => {
       result.Body.text().then(string => { 
@@ -86,16 +94,26 @@ class App extends Component {
         this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
         
       });
-    //    alert(string))
-  // handle the String data return String 
-
-     // let json_content = result.Body.text();
-     // alert(json_content);
-//let contents = JSON.parse(json_content);
- //this.set.time_array = contents['list'];
-//this.set.vid.style.display = "block";alert(this.set.time_array)
+ 
 })
-    .catch(err => console.log(err));
+    .catch(err => 
+    {
+    //json file is not ready. wait for 2 minute
+    this.wait(120000).then(() => { Storage.get('CV_TimeInterval.json', { download: true })
+    .then(result => {
+      result.Body.text().then(string => { 
+        //alert(string)
+        let contents = JSON.parse(string);
+        this.state.time_array = contents['list'];
+        
+        this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
+        
+      });
+ 
+})}).catch(err => {console.log(err)});
+    
+    console.log(err);
+    });
  
  }
  
@@ -132,7 +150,7 @@ let promise2 = new Promise((resolve, reject) => {
     }));
   });
     promise.then(
-  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: false }); this.retrieveTC_json();
+  result =>{ alert("Uploaded. Wait for censoring"); this.setState({ visible: false }); this.retrieveTC_json();  this.add2MtssDelay();
   //get the time code json from S3
   
 /*
