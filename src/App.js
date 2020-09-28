@@ -67,7 +67,7 @@ class App extends Component {
 
 				}
   		}
-  	show_video ? this.setState({ vid_width: "640",  img_width: "0", vid_muted : false }): this.setState({ vid_width: "0", img_width: "64" , vid_muted : true});
+  	show_video ? this.setState({ vid_width: "640",  img_width: "0", vid_muted : false }): this.setState({ vid_width: "0", img_width: "128" , vid_muted : true});
   		
 		//	}
 
@@ -121,6 +121,7 @@ let promise2 = new Promise((resolve, reject) => {
 });
 */
   //      return new Promise((resolve, reject) => {
+  this.setState({ visible: true });
        let promise = new Promise((resolve, reject) => {
          var filename = this.state.file.name;
           //var file_content = 'conent for test2';
@@ -174,13 +175,13 @@ race.then((res) => alert(res)) // -> Promise A win!
   ) : null}
         <p>
         <input type="file" onChange={this.onChange} />
-        <button onClick={this.Store_S3}>Upload to  S3</button>
+        <button onClick={this.Store_S3}>Censor the Video(Upload to  S3)</button>
         </p>
         <p>
-        <img src={censr} alt="censor" width={this.state.img_width} height="35" />
+        <img src={censr} alt="censor" width={this.state.img_width} height="70" />
         </p>
         <p>        
-        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} muted={this.state.muted} height="352" controls/>
+        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} muted={this.state.vid_muted} height="352" controls/>
         </p>
         
          
