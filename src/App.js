@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import Async from 'react-async';
 import logo from './logo.svg';
+import censr from './img_censr.jpg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
@@ -29,7 +30,7 @@ class App extends Component {
    constructor(props) {
         super(props);
         
-    this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_url:null };
+    this.state = { visible: false, file:null, time_array:null, vid_width:"640", img_width : "1", vid_url:null };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this);
@@ -48,7 +49,7 @@ class App extends Component {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
 			
-			this.setState({ vid_width: "640" });
+			this.setState({ vid_width: "640", img_width: "1" });
 			let show_video = true;
         if (this.state.time_array != null){
  
@@ -66,7 +67,7 @@ class App extends Component {
 
 				}
   		}
-  	show_video ? this.setState({ vid_width: "640" }): this.setState({ vid_width: "64" });
+  	show_video ? this.setState({ vid_width: "640",  img_width: "1" }): this.setState({ vid_width: "64", img_width: "640" });
   		
 		//	}
 
@@ -82,7 +83,7 @@ class App extends Component {
         let contents = JSON.parse(string);
         this.state.time_array = contents['list'];
         
-        this.setState({ vid_width: "640" });
+        this.setState({ vid_width: "640", img_width: "1" });
         
       });
     //    alert(string))
@@ -174,7 +175,7 @@ race.then((res) => alert(res)) // -> Promise A win!
    
         <input type="file" onChange={this.onChange} />
         <button onClick={this.Store_S3}>Upload to  S3</button>
-        
+        <img src={censr} alt="censor" width={this.state.img_width} height="352" />
         <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} height="352" controls/>
         
          
