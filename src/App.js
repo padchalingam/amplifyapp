@@ -44,6 +44,7 @@ class App extends Component {
     this.setState({file:e.target.files[0]});
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
     this.file = this.state.file;
+    this.setState({ vid_width: "0", img_width: "128" , vid_muted : true});
   }
   
   		ontimeupdate(e) {
@@ -99,9 +100,9 @@ class App extends Component {
     .catch(err => 
     {
     //json file is not ready. wait for 2 minute
-    
+     alert("try to download after 2 mts now");
     this.wait(120000).then(() => { 
-      alert("try to download after 2 mts now");
+     
       Storage.get('CV_TimeInterval.json', { download: true })
     .then(result => {
       result.Body.text().then(string => { 
@@ -113,8 +114,8 @@ class App extends Component {
         
       }); this.setState({ visible: false }); 
  
-})}).catch(err => {console.log(err)});
-    alert("json down load failed after 2 mts waiting");
+})}).catch(err => { alert("json down load failed after 2 mts waiting");this.setState({ vid_width: "0", img_width: "128", vid_muted : true, visible: false }); console.log(err)});
+   
     this.setState({ vid_width: "0", img_width: "128", vid_muted : true, visible: false }); 
     console.log(err);
     });
