@@ -114,6 +114,7 @@ class App extends Component {
       }); this.setState({ visible: false }); 
  
 })}).catch(err => {console.log(err)});
+    alert("json down load failed after 2 mts waiting");
     this.setState({ vid_width: "0", img_width: "128", vid_muted : true, visible: false }); 
     console.log(err);
     });
