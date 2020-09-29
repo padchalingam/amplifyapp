@@ -99,7 +99,10 @@ class App extends Component {
     .catch(err => 
     {
     //json file is not ready. wait for 2 minute
-    this.wait(120000).then(() => { Storage.get('CV_TimeInterval.json', { download: true })
+    
+    this.wait(120000).then(() => { 
+      alert("try to download after 2 mts now");
+      Storage.get('CV_TimeInterval.json', { download: true })
     .then(result => {
       result.Body.text().then(string => { 
         //alert(string)
@@ -111,7 +114,7 @@ class App extends Component {
       }); this.setState({ visible: false }); 
  
 })}).catch(err => {console.log(err)});
-    this.setState({ vid_width: "0", img_width: "128", vid_muted : true, visible: false }); alert ("time out-waited 2 mts for censoring");
+    this.setState({ vid_width: "0", img_width: "128", vid_muted : true, visible: false }); 
     console.log(err);
     });
  
