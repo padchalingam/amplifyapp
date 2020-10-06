@@ -198,7 +198,7 @@ race.then((res) => alert(res)) // -> Promise A win!
   ) : null}
         <p>
         <input type="file" onChange={this.onChange} />
-        <button onClick={this.Store_S3}>Censor the Video(Upload to  S3)</button>
+        <button onClick={this.Store_S3}>Video Moderation(identify unsafe contents)</button>
         </p>
         <p>
         <img src={censr} alt="censor" width={this.state.img_width} height="70" />
