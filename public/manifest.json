@@ -1,6 +1,6 @@
 {
   "short_name": "Movie Moderation",
-  "name": "Movie Moderation",
+  "name": "Movie Moderation by AWS Rekognition",
   "icons": [
     {
       "src": "favicon.ico",
