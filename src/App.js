@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //import Async from 'react-async';
 import logo from './logo.svg';
-import censr from './MovModer_192.png';
+import loading from './loading.gif';
+import censr from './img_censr.jpg';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
@@ -193,7 +194,7 @@ race.then((res) => alert(res)) // -> Promise A win!
         
         
         {this.state.visible ? (
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={loading} className="App-logo" alt="logo" />
          
   ) : null}
         <p>
