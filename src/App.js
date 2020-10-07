@@ -70,6 +70,7 @@ class App extends Component {
 
 				}
   		}
+  		else { show_video = false;}
   	show_video ? this.setState({ vid_width: "640",  img_width: "0", vid_muted : false }): this.setState({ vid_width: "0", img_width: "128" , vid_muted : true});
   		
 		//	}
