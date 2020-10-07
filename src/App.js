@@ -31,7 +31,7 @@ class App extends Component {
    constructor(props) {
         super(props);
         
-    this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null };
+    this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false};
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this);
@@ -45,7 +45,7 @@ class App extends Component {
     this.setState({file:e.target.files[0]});
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
     this.file = this.state.file;
-    this.setState({ vid_width: "0", img_width: "128" , vid_muted : true});
+    this.setState({ vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
   }
   
   		ontimeupdate(e) {
@@ -199,7 +199,8 @@ race.then((res) => alert(res)) // -> Promise A win!
   ) : null}
         <p>
         <input type="file" onChange={this.onChange} />
-        <button onClick={this.Store_S3}>Video Moderation(identify unsafe contents)</button>
+        {this.state.file_chosen ? (<button onClick={this.Store_S3}>Video Moderation(identify unsafe contents)</button>
+        ) : null}
         </p>
         <p>
         <img src={censr} alt="censor" width={this.state.img_width} height="70" />
