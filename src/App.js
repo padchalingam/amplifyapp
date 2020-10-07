@@ -45,7 +45,7 @@ class App extends Component {
     this.setState({file:e.target.files[0]});
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
     this.file = this.state.file;
-    this.setState({ vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
+    this.setState({ visible: false, vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
   }
   
   		ontimeupdate(e) {
