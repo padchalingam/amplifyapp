@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import Async from 'react-async';
 import logo from './logo.svg';
-import censr from './img_censr.jpg';
+import censr from './MovModer_192.png';
 import './App.css';
 import Amplify, { Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
