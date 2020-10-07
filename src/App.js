@@ -194,7 +194,7 @@ race.then((res) => alert(res)) // -> Promise A win!
         
         
         {this.state.visible ? (
-        <img src={loading} className="App-logo" alt="logo" />
+        <img src={loading} alt="loading.." />
          
   ) : null}
         <p>
