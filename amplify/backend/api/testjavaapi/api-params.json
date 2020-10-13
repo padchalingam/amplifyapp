@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/testjavaapi",
+            "lambdaFunction": "tetsjavaapi",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/testjavaapi"
+        }
+    ],
+    "resourceName": "testjavaapi",
+    "apiName": "testjavaapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "tetsjavaapi"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-amplifyapp-dev-174111-authRole",
+        "unAuthRoleName": "amplify-amplifyapp-dev-174111-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "tetsjavaapi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

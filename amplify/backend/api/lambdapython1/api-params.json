@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/getvideoduration",
+            "lambdaFunction": "getdurationpython",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/getvideoduration"
+        }
+    ],
+    "resourceName": "lambdapython1",
+    "apiName": "lambdapython1",
+    "functionArns": [
+        {
+            "lambdaFunction": "getdurationpython"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-amplifyapp-dev-174111-authRole",
+        "unAuthRoleName": "amplify-amplifyapp-dev-174111-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "getdurationpython",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
