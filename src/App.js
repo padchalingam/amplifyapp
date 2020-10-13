@@ -169,7 +169,7 @@ race.then((res) => alert(res)) // -> Promise A win!
 //  Promise.race([this.promise1, this.promise2]).then((value) => {
  //  alert("value is"+value);});
   return}, // doesn't run
-  error => { alert("upload failedx");this.setState({ visible: false }); return} // shows "Error: Whoops!" after 1 second
+  error => { alert("upload failed");this.setState({ visible: false }); return} // shows "Error: Whoops!" after 1 second
 );
   }
    
