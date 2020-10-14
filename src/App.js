@@ -69,7 +69,8 @@ class App extends Component {
         name: 'param',
     },
 };
-get_API_data(){
+ get_API_data = async () => {
+//get_API_data(){
 API.get(this.state.apiName, this.state.path, this.state.myInit)
   .then(response => {
     // Add your code here
@@ -241,7 +242,7 @@ race.then((res) => alert(res)) // -> Promise A win!
          
   ) : null}
         <p>
-        <button onClick={this.get_API_data()}>test api</button>
+        <button onClick={this.get_API_data}>test api</button>
         </p>
         <p>
         <input type="file" onChange={this.onChange} />
