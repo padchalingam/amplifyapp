@@ -26,15 +26,7 @@ Amplify.configure({
             bucket: 'videobucketsprabha', //REQUIRED -  Amazon S3 bucket name
             region: 'us-east-1', //OPTIONAL -  Amazon service region
         }
-    },
-        API: {
-        endpoints: [
-            {
-                name: "testjavaapi",
-                endpoint: "https://master.devp2jndnlfpu.amplifyapp.com/"
-            }
-        ]
-    }
+    } 
 });
 class App extends Component {
 
