@@ -42,7 +42,7 @@ class App extends Component {
         super(props);
         
     this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false,
-      apiName : 'testjavaapi', path : 'testjavaapi', myInit : { // OPTIONAL
+      apiName : 'testjavaapi', path : '/testjavaapi', myInit : { // OPTIONAL
     headers: {}, // OPTIONAL
     response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
     queryStringParameters: {  // OPTIONAL
@@ -59,7 +59,7 @@ class App extends Component {
    }
   
   //begin test java api
-  
+  /*
    apiName = 'MyApiName';
  path = '/path'; 
  myInit = { // OPTIONAL
@@ -69,6 +69,7 @@ class App extends Component {
         name: 'param',
     },
 };
+*/
  get_API_data = async () => {
 //get_API_data(){
 API.get(this.state.apiName, this.state.path, this.state.myInit)
