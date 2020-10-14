@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/javaapipath1",
+            "lambdaFunction": "javafunction1",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/javaapipath1"
+        }
+    ],
+    "resourceName": "javaapi1",
+    "apiName": "javaapi1",
+    "functionArns": [
+        {
+            "lambdaFunction": "javafunction1"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-amplifyapp-dev-174111-authRole",
+        "unAuthRoleName": "amplify-amplifyapp-dev-174111-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "javafunction1",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
