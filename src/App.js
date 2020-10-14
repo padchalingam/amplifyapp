@@ -4,7 +4,9 @@ import logo from './logo.svg';
 import loading from './loading.gif';
 import censr from './img_censr.jpg';
 import './App.css';
-import Amplify, { Storage } from 'aws-amplify';
+//import Amplify,  { Storage} from 'aws-amplify';
+//import API, { graphqlOperation } from '@aws-amplify/api';
+import Amplify, { API, graphqlOperation, Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
 //import { StyleSheet, ActivityIndicator, View } from 'react-native';
 //import Spinner from 'react-native-loading-spinner-overlay';
@@ -24,6 +26,14 @@ Amplify.configure({
             bucket: 'videobucketsprabha', //REQUIRED -  Amazon S3 bucket name
             region: 'us-east-1', //OPTIONAL -  Amazon service region
         }
+    },
+        API: {
+        endpoints: [
+            {
+                name: "testjavaapi",
+                endpoint: "https://master.devp2jndnlfpu.amplifyapp.com/"
+            }
+        ]
     }
 });
 class App extends Component {
@@ -31,7 +41,15 @@ class App extends Component {
    constructor(props) {
         super(props);
         
-    this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false};
+    this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false,
+      apiName : 'testjavaapi', path : 'testjavaapi', myInit : { // OPTIONAL
+    headers: {}, // OPTIONAL
+    response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+    queryStringParameters: {  // OPTIONAL
+        name: 'param',
+    },
+}
+    };
     this.filehandle = null;
     this.file = null;
     this.onChange = this.onChange.bind(this);
@@ -40,6 +58,30 @@ class App extends Component {
      
    }
   
+  //begin test java api
+  
+   apiName = 'MyApiName';
+ path = '/path'; 
+ myInit = { // OPTIONAL
+    headers: {}, // OPTIONAL
+    response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+    queryStringParameters: {  // OPTIONAL
+        name: 'param',
+    },
+};
+get_API_data(){
+API.get(this.state.apiName, this.state.path, this.state.myInit)
+  .then(response => {
+    // Add your code here
+    alert("API invoked");
+  })
+  .catch(error => {
+    //console.log(error.response);
+     alert("API invoke failed");
+ });
+}
+  
+  //enfd test java api
  
   onChange(e) {
     this.setState({file:e.target.files[0]});
@@ -198,6 +240,9 @@ race.then((res) => alert(res)) // -> Promise A win!
         <img src={loading} alt="loading.." />
          
   ) : null}
+        <p>
+        <button onClick={this.get_API_data()}>test api</button>
+        </p>
         <p>
         <input type="file" onChange={this.onChange} />
         {this.state.file_chosen ? (<button onClick={this.Store_S3}>Video Moderation(identify unsafe contents)</button>
