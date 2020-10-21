@@ -8,7 +8,7 @@ import './App.css';
 //import API, { graphqlOperation } from '@aws-amplify/api';
 import Amplify, { API, graphqlOperation, Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+//import axios from 'axios';
 //import { StyleSheet, ActivityIndicator, View } from 'react-native';
 //import Spinner from 'react-native-loading-spinner-overlay';
 //import awsconfig from './aws-exports';
@@ -72,22 +72,22 @@ class App extends Component {
 };
 */
  get_API_data = async () => {
-       event.preventDefault();
-    const { name, message } = this.state;
-    await axios.post(
-      'https://ibt4xj7apf.execute-api.us-east-1.amazonaws.com/default/getVideoDuration',
-      { key1: `${name}, ${message}` }
-    );
+  //     event.preventDefault();
+   // const { name, message } = this.state;
+  //  await axios.post(
+  //    'https://ibt4xj7apf.execute-api.us-east-1.amazonaws.com/default/getVideoDuration',
+  //    { key1: `${name}, ${message}` }
+  //  );
 //get_API_data(){
-//API.get(this.state.apiName, this.state.path, this.state.myInit)
-//  .then(response => {
+API.get(this.state.apiName, this.state.path, this.state.myInit)
+  .then(response => {
     // Add your code here
-//    alert("API invoked");
-//  })
-//  .catch(error => {
+    alert("API invoked");
+  })
+  .catch(error => {
     //console.log(error.response);
-//     alert("API invoke failed");
-// });
+     alert("API invoke failed");
+ });
 }
   
   //enfd test java api
