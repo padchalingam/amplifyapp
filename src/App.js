@@ -40,9 +40,9 @@ class App extends Component {
 
    constructor(props) {
         super(props);
-        
+        // https://ibt4xj7apf.execute-api.us-east-1.amazonaws.com/default/getVideoDuration
     this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false,
-      apiName : 'javaapi1', path : '/javaapipath1', myInit : { // OPTIONAL
+      apiName : 'getVideoDuration-API', path : '/getVideoDuration', myInit : { // OPTIONAL
     headers: {}, // OPTIONAL
     response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
     queryStringParameters: {  // OPTIONAL
