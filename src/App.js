@@ -79,7 +79,7 @@ class App extends Component {
   //    { key1: `${name}, ${message}` }
   //  );
 //get_API_data(){
-API.get(this.state.apiName, this.state.path, this.state.myInit)
+API.post(this.state.apiName, this.state.path, this.state.myInit)
   .then(response => {
     // Add your code here
     alert("API invoked");
