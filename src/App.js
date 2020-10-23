@@ -86,7 +86,7 @@ class App extends Component {
     body: {
       duration: this.state.duration,
       video_bucket : "bucket_name",
-      video_key : this.state.file.name
+      video_key :""
     }
   };
 API.post(this.state.apiName, this.state.path, data)
