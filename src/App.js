@@ -44,7 +44,7 @@ class App extends Component {
         // https://ibt4xj7apf.execute-api.us-east-1.amazonaws.com/default/getVideoDuration
     this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false,
       apiName : 'getVideoDuration-API', name: '',  message: '', path : '/getVideoDuration', myInit : { // OPTIONAL
-    body: {videonamebody: 'test.mp4'},headers: {videoname: 'test.mp4'}, // OPTIONAL
+    body: {video_bucket: 's3_video_bucket', video_key: 'test.mp4'},headers: {videoname: 'test.mp4'}, // OPTIONAL
     response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
     queryStringParameters: {  // OPTIONAL
         name: 'param',
