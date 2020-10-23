@@ -8,6 +8,8 @@ import './App.css';
 //import API, { graphqlOperation } from '@aws-amplify/api';
 import Amplify, { API, graphqlOperation, Storage } from 'aws-amplify';
 import ReactDOM from 'react-dom';
+ 
+//Import {getVideoDurationInSeconds} from 'get-video-duration';
 //import axios from 'axios';
 //import { StyleSheet, ActivityIndicator, View } from 'react-native';
 //import Spinner from 'react-native-loading-spinner-overlay';
@@ -37,14 +39,15 @@ Amplify.configure({
         ]
     }
 });
+const { getVideoDurationInSeconds } = require('get-video-duration');
 class App extends Component {
 
    constructor(props) {
         super(props);
         // https://ibt4xj7apf.execute-api.us-east-1.amazonaws.com/default/getVideoDuration
-    this.state = { visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false,
-      apiName : 'getVideoDuration-API', name: '',  message: '', path : '/getVideoDuration', myInit : { // OPTIONAL
-    body: {video_bucket: 's3_video_bucket', video_key: 'test.mp4'},headers: {videoname: 'test.mp4'}, // OPTIONAL
+    this.state = {duration: "0", visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false,
+      apiName : 'getVideoDuration-API', name: '',  message: '', path : '/getVideoDuration', video_bucket: "", video_key: "", myInit : { // OPTIONAL
+    body: {video_bucket: 's3_video_bucket', video_key: 'test.mp4', duration: '0'},headers: {videoname: 'test.mp4'}, // OPTIONAL
     response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
     queryStringParameters: {  // OPTIONAL
         name: 'param',
@@ -79,7 +82,14 @@ class App extends Component {
   //    { key1: `${name}, ${message}` }
   //  );
 //get_API_data(){
-API.post(this.state.apiName, this.state.path, this.state.myInit)
+  let data = {
+    body: {
+      duration: this.state.duration,
+      video_bucket : "bucket_name",
+      video_key : this.state.file.name
+    }
+  };
+API.post(this.state.apiName, this.state.path, data)
   .then(response => {
     // Add your code here
     alert("API invoked"+response.headers);
@@ -95,6 +105,10 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   onChange(e) {
     this.setState({file:e.target.files[0]});
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
+     getVideoDurationInSeconds(this.state.file).then((duration) => {
+  this.setState({duration: duration}); 
+   
+});
     this.file = this.state.file;
     this.setState({ time_array:null, visible: false, vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
   }
