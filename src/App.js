@@ -9,7 +9,7 @@ import './App.css';
 import Amplify, { API, graphqlOperation, Storage } from 'aws-amplify';
 
 //import VideoLength from 'video-length';
-import {getVideoDurationInSeconds} from 'get-video-duration';
+import getVideoDurationInSeconds from 'get-video-duration';
 import ReactDOM from 'react-dom';
  
 //Import {getVideoDurationInSeconds} from 'get-video-duration';
