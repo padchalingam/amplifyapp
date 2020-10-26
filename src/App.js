@@ -82,14 +82,8 @@ class App extends Component {
   //    { key1: `${name}, ${message}` }
   //  );
 //get_API_data(){
-  let data = {
-    body: {
-      duration: this.state.duration,
-      video_bucket : "bucket_name",
-      video_key :""
-    }
-  };
-API.post(this.state.apiName, this.state.path, data)
+
+API.post(this.state.apiName, this.state.path, this.state.myInit)
   .then(response => {
     // Add your code here
     alert("API invoked"+response.headers);
