@@ -40,7 +40,7 @@ Amplify.configure({
     }
 });
 //const { getVideoDurationInSeconds } = require('get-video-duration');
-const VideoLength = require('video-length');
+const  VideoLength = require('video-length');
 class App extends Component {
 
    constructor(props) {
