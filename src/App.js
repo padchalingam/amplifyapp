@@ -39,7 +39,7 @@ Amplify.configure({
         ]
     }
 });
-const { getVideoDurationInSeconds } = require('get-video-duration');
+// const { getVideoDurationInSeconds } = require('get-video-duration');
 class App extends Component {
 
    constructor(props) {
@@ -100,9 +100,9 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
     this.setState({file:e.target.files[0]});
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
      
-     getVideoDurationInSeconds(this.state.file).then((duration) => {
-  this.setState({duration: duration}); 
-   });
+ //    getVideoDurationInSeconds(this.state.file).then((duration) => {
+ // this.setState({duration: duration}); 
+  // });
    
     this.file = this.state.file;
     this.setState({ time_array:null, visible: false, vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
