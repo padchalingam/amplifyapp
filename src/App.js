@@ -105,7 +105,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
       var video = document.createElement('video');
       video.preload = 'metadata';
-      video.src = window.URL.createObjectURL(this.state.vid_url);
+      video.src =  this.state.vid_url;
       alert("video duration:"+video.duration);
      
  //    getVideoDurationInSeconds(this.state.file).then((duration) => {
