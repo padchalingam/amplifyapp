@@ -103,11 +103,10 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   onChange(e) {
     this.setState({file:e.target.files[0]});
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
-     // var video = document.createElement('video');
-     // video.preload = 'metadata';
+       
      // video.src =  window.URL.createObjectURL(e.target.files[0]);
      // video.src =  this.state.vid_url;
-    //  alert("video duration:"+video.duration);
+      alert("video duration:"+this.state.duration);
      
  //    getVideoDurationInSeconds(this.state.file).then((duration) => {
  // this.setState({duration: duration}); 
@@ -120,7 +119,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   		ontimeupdate(e) {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
-			
+			 alert("video duration:"+this.state.duration);
 			this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
 			let show_video = true;
         if (this.state.time_array != null){
@@ -279,7 +278,7 @@ race.then((res) => alert(res)) // -> Promise A win!
         <img src={censr} alt="censor" width={this.state.img_width} height="70" />
         </p>
         <p>        
-        <video id="vid"   src={ this.state.vid_url} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} muted={this.state.vid_muted} height="352" controls/>
+        <video id="vid"   src={ this.state.vid_url} duration={this.state.duration} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} muted={this.state.vid_muted} height="352" controls/>
         </p>
         
          
