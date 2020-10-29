@@ -106,7 +106,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
        
      // video.src =  window.URL.createObjectURL(e.target.files[0]);
      // video.src =  this.state.vid_url;
-      alert("video duration:"+this.state.duration);
+   //   alert("video duration:"+this.state.duration);
      
  //    getVideoDurationInSeconds(this.state.file).then((duration) => {
  // this.setState({duration: duration}); 
@@ -119,7 +119,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   		ontimeupdate(e) {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
-			 alert("video duration:"+this.state.duration);
+		//	 alert("video duration:"+this.state.duration);
 			this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
 			let show_video = true;
         if (this.state.time_array != null){
