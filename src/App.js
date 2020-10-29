@@ -278,7 +278,7 @@ race.then((res) => alert(res)) // -> Promise A win!
         <img src={censr} alt="censor" width={this.state.img_width} height="70" />
         </p>
         <p>        
-        <video id="vid"   src={ this.state.vid_url} duration={this.state.duration} onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} muted={this.state.vid_muted} height="352" controls/>
+        <video id="vid"   src={ this.state.vid_url} duration={this.state.duration} preload = 'metadata' onTimeUpdate={this.ontimeupdate}  width={this.state.vid_width} muted={this.state.vid_muted} height="352" controls/>
         </p>
         
          
