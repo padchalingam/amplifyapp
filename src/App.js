@@ -102,7 +102,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
  
   onChange(e) {
     this.setState({file:e.target.files[0]});
-    // this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
+     this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
       var video = document.createElement('video');
       video.preload = 'metadata';
       video.src =  window.URL.createObjectURL(e.target.files[0]);
