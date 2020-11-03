@@ -50,7 +50,7 @@ class App extends Component {
         super(props);
         // https://ibt4xj7apf.execute-api.us-east-1.amazonaws.com/default/getVideoDuration
     this.state = {duration: "0", visible: false, file:null, time_array:null, vid_width:"640", vid_muted : false, img_width : "0", vid_url:null, file_chosen : false,
-      apiName : 'getVideoDuration-API', name: '',  message: '', path : '/getVideoDuration', video_bucket: "", video_key: "", myInit : { // OPTIONAL
+      apiName : 'getVideoDuration-API', name: '',  message: '', path : '/getvideoduration-api', video_bucket: "", video_key: "", myInit : { // OPTIONAL
     body: {video_bucket: 's3_video_bucket', video_key: 'test.mp4', duration: '0'},headers: {videoname: 'test.mp4'}, // OPTIONAL
     response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
     queryStringParameters: {  // OPTIONAL
@@ -92,6 +92,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   .then(response => {
     // Add your code here
     alert("API invoked"+response.data.body);
+    this.setState({duration: response.data.body});
   })
   .catch(error => {
     //console.log(error.response);
@@ -114,6 +115,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   // });
    
     this.file = this.state.file;
+    this.get_API_data;
     this.setState({ time_array:null, visible: false, vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
   }
   
@@ -259,11 +261,9 @@ race.then((res) => alert(res)) // -> Promise A win!
  
  
     render() {
-          //test 1
-  const element_vid2 = <video id="vid2" />;
-  //end test1
+           
     return (
-        element_vid2,
+        
       <div className="App">
         
         
