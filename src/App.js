@@ -66,6 +66,7 @@ class App extends Component {
      
    }
   
+
   //begin test java api
   /*
    apiName = 'MyApiName';
@@ -90,7 +91,7 @@ class App extends Component {
 API.post(this.state.apiName, this.state.path, this.state.myInit)
   .then(response => {
     // Add your code here
-    alert("API invoked"+response.headers);
+    alert("API invoked"+response.data.body);
   })
   .catch(error => {
     //console.log(error.response);
@@ -119,7 +120,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   		ontimeupdate(e) {
 			// Display the current position of the video in a p element with id="demo"
 			//alert("ontimeupdate");
-			 alert("video duration:"+this.state.duration);
+		//	 alert("video duration:"+this.state.duration);
 			this.setState({ vid_width: "640", img_width: "0", vid_muted : false });
 			let show_video = true;
         if (this.state.time_array != null){
@@ -258,7 +259,11 @@ race.then((res) => alert(res)) // -> Promise A win!
  
  
     render() {
+          //test 1
+  const element_vid2 = <video id="vid2" />;
+  //end test1
     return (
+        element_vid2,
       <div className="App">
         
         
