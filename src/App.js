@@ -37,7 +37,8 @@ Amplify.configure({
         endpoints: [
             {
                 name: "getVideoDuration-API",
-                endpoint: "https://ibt4xj7apf.execute-api.us-east-1.amazonaws.com/default"
+                //https://hlbyevd8yd.execute-api.us-east-1.amazonaws.com/dev/getvideoduration-api
+                endpoint: "https://hlbyevd8yd.execute-api.us-east-1.amazonaws.com/dev"
             }
         ]
     }
