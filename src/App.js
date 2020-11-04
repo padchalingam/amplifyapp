@@ -116,7 +116,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   // });
    
     this.file = this.state.file;
-    this.get_API_data;
+    {this.get_API_data}
     this.setState({ time_array:null, visible: false, vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
   }
   
