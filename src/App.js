@@ -120,7 +120,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   .then(response => {
     // Add your code here
     alert("API invoked"+response.data);
-    this.setState({duration: response.data});
+   // this.setState({duration: response.data});
   })
   .catch(error => {
     //console.log(error.response);
