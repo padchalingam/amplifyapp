@@ -81,7 +81,7 @@ class App extends Component {
  }
  
  get_chosen_file(e){
-     this.setState({file:e.target.files[0]}).this.assign_file(this.state.file);
+     this.setState({file:e.target.files[0]});
      return this;
  }
  
