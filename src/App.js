@@ -116,11 +116,19 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   // });
    
     this.file = this.state.file;
+    var data_tmp ={ // OPTIONAL
+    body: {video_bucket: 's3_video_bucket', video_key: this.state.file.name, duration: '0'}, // OPTIONAL
+    response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+    queryStringParameters: {  // OPTIONAL
+        name: 'param',
+    },
+};
+this.setState({myInit : data_tmp});
     API.post(this.state.apiName, this.state.path, this.state.myInit)
   .then(response => {
     // Add your code here
     alert("API invoked"+response.data);
-   // this.setState({duration: response.data});
+    this.setState({duration: response.data});
   })
   .catch(error => {
     //console.log(error.response);
