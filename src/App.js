@@ -69,7 +69,7 @@ class App extends Component {
      
    }
   
- assign_file  = async (file) =>{
+ assign_file(file){
  this.setState({myInit: { // OPTIONAL
     body: {video_bucket: 's3_video_bucket', video_key: file.name, duration: '0'}, // OPTIONAL
     response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
@@ -116,7 +116,7 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
 
   onChange(e) {
    // this.setState({file:e.target.files[0]}).then(this.assign_file).catch();
-    this.setState({file:e.target.files[0]});
+    this.setState({file:e.target.files[0]}).assign_file(this.state.file);
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
        
      // video.src =  window.URL.createObjectURL(e.target.files[0]);
