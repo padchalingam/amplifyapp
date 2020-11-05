@@ -119,12 +119,12 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
     API.post(this.state.apiName, this.state.path, this.state.myInit)
   .then(response => {
     // Add your code here
-    //alert("API invoked"+response.data.body);
+    alert("API invoked"+response.data.body);
     this.setState({duration: response.data.body});
   })
   .catch(error => {
     //console.log(error.response);
-    // alert("API invoke failed");
+     alert("API invoke failed");
  });
     this.setState({ time_array:null, visible: false, vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
   }
