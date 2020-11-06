@@ -66,7 +66,7 @@ class App extends Component {
             getVideoDurationAPI_PATH: '/getvideoduration-api',
             video_bucket: "",
             video_key: "",
-            myInit: { // OPTIONAL
+            API_Headers_Body: { // OPTIONAL
                 body: { video_bucket: 's3_video_bucket', video_key: 'test.mp4', duration: '0' }, // OPTIONAL
                 response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
                 queryStringParameters: { // OPTIONAL
@@ -82,9 +82,9 @@ class App extends Component {
 
     }
 
-    change_myinit(file) {
+    change_API_Headers_Body(file) {
         this.setState({
-            myInit: { // OPTIONAL
+            API_Headers_Body: { // OPTIONAL
                 body: { video_bucket: 's3_video_bucket', video_key: file.name, duration: '0' }, // OPTIONAL
                 response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
                 queryStringParameters: { // OPTIONAL
@@ -99,12 +99,32 @@ class App extends Component {
         this.setState({ file: e.target.files[0] });
         return this;
     }
-    async get_chosen_file_and_change_myinit(e) {
+    async get_chosen_file_and_change_API_Headers_Body(e) {
         try {
             await this.get_chosen_file(e);
             if (this.state.file) {
-                await this.change_myinit(this.state.file);
-                API.post(this.state.getVideoDurationAPI, this.state.getVideoDurationAPI_PATH, this.state.myInit)
+                await this.change_API_Headers_Body(this.state.file);
+
+            }
+        }
+        catch (err) { alert(err) }
+
+    }
+
+    async submit_video() {
+        try {
+            var filename = this.state.file.name;
+
+            var file_content = this.state.file;
+
+            if (this.state.file) {
+                //upload video to S3
+                await Storage.put(filename, file_content, {
+                    // level: 'private',
+                    contentType: file_content.type
+                });
+                //estimate video duration
+                await API.post(this.state.getVideoDurationAPI, this.state.getVideoDurationAPI_PATH, this.state.API_Headers_Body)
                     .then(response => {
                         // Add your code here
                         alert("API invoked" + response.data);
@@ -123,7 +143,7 @@ class App extends Component {
 
     onChange(e) {
 
-        this.get_chosen_file_and_change_myinit(e);
+        this.get_chosen_file_and_change_API_Headers_Body(e);
 
         this.setState({ vid_url: window.URL.createObjectURL(e.target.files[0]) });
 
@@ -218,27 +238,7 @@ class App extends Component {
     }
 
     Store_S3 = async() => {
-        /*  
-  let promise1 = new Promise((resolve, reject) => {
- // setTimeout(resolve, 5000, 'one');
- const id = setTimeout(() => {
-    alert("8000");
-    clearTimeout(id);
-    resolve('timeout!');
-  }, 8000);
-});
 
-let promise2 = new Promise((resolve, reject) => {
-  const id2 = setTimeout(() => {
-    alert("4000");
-    clearTimeout(id2);
-    
-    resolve('response!');
-  }, 4000);
- // setTimeout(resolve, 4000, 'two');
-});
-*/
-        //      return new Promise((resolve, reject) => {
         this.setState({ visible: true });
         let promise = new Promise((resolve, reject) => {
             var filename = this.state.file.name;
@@ -253,16 +253,7 @@ let promise2 = new Promise((resolve, reject) => {
             result => {
                 alert("Uploaded. Wait for censoring");
                 this.retrieveTC_json();
-                //get the time code json from S3
 
-                /*
-                  let race = Promise.race([
-                  promise1, promise2
-                ])
-                race.then((res) => alert(res)) // -> Promise A win!
-                */
-                //  Promise.race([this.promise1, this.promise2]).then((value) => {
-                //  alert("value is"+value);});
                 return
             }, // doesn't run
             error => {
@@ -273,19 +264,7 @@ let promise2 = new Promise((resolve, reject) => {
         );
     }
 
-    /*function Store_S3(filename,content){
-    return new Promise((resolve, reject) => {
-    resolve(Storage.put(filename, content, {
-        level: 'private',
-        contentType: 'text/plain'
-    }));
-  });
-  
-}
-*/
-    // listQuery = async () => {
-    //  const msg = await Store_S3('test1.txt','content cfor the file test1.txt');
-    //}
+
 
 
 
@@ -320,55 +299,7 @@ let promise2 = new Promise((resolve, reject) => {
 
 }
 
-/*
-async function App() {
-  try {
-    //const msg = await Store_S3('test1.txt','content cfor the file test1.txt');
-      return (
-         
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-          
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          uploaded
-        </a>
-        <h1>Hello from Prabha - uploaded</h1>
-      </header>
-    </div>
-  );
-  } catch(err) {
-      return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-          
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          upload failed
-        </a>
-        <h1>Hello from Prabha - upload failed</h1>
-      </header>
-    </div>
-  );
-  }
-}
-*/
+
 
 
 export default App;
