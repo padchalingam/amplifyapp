@@ -78,6 +78,7 @@ class App extends Component {
         this.file = null;
         this.onChange = this.onChange.bind(this);
         this.ontimeupdate = this.ontimeupdate.bind(this);
+        this.submit_video = this.submit_video.bind(this);
         //this.add2MtssDelay = this.add2MtssDelay.bind(this);
 
     }
