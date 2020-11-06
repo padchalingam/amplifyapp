@@ -282,7 +282,7 @@ class App extends Component {
         
         <p>
         <input type="file" onChange={this.onChange} />
-        {this.state.file_chosen ? (<button onClick={this.Store_S3}>Video Moderation(identify unsafe contents)</button>
+        {this.state.file_chosen ? (<button onClick={this.submit_video}>Video Moderation(identify unsafe contents)</button>
         ) : null}
         </p>
         <p>
