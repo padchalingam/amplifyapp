@@ -114,13 +114,14 @@ class App extends Component {
 
     async submit_video(e) {
         try {
-            
+
             if (this.state.file) {
-            var filename = this.state.file.name;
-            var file_content = this.state.file;
+                var filename = this.state.file.name;
+                var file_content = this.state.file;
                 //upload video to S3
                 await Storage.put(filename, file_content, {
                     // level: 'private',
+                    ACL: "public-read",
                     contentType: file_content.type
                 });
                 //estimate video duration
