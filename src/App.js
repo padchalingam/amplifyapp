@@ -111,7 +111,7 @@ class App extends Component {
 
     }
 
-    async submit_video() {
+    async submit_video(e) {
         try {
             
             if (this.state.file) {
