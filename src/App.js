@@ -102,19 +102,21 @@ class App extends Component {
     async get_chosen_file_and_change_myinit(e) {
         try {
             await this.get_chosen_file(e);
-            await this.change_myinit(this.state.file);
-            API.post(this.state.getVideoDurationAPI, this.state.getVideoDurationAPI_PATH, this.state.myInit)
-                .then(response => {
-                    // Add your code here
-                    alert("API invoked" + response.data);
-                    this.setState({ duration: response.data });
-                })
-                .catch(error => {
-                    //console.log(error.response);
-                    alert("API invoke failed");
-                });
+            if (this.state.file) {
+                await this.change_myinit(this.state.file);
+                API.post(this.state.getVideoDurationAPI, this.state.getVideoDurationAPI_PATH, this.state.myInit)
+                    .then(response => {
+                        // Add your code here
+                        alert("API invoked" + response.data);
+                        this.setState({ duration: response.data });
+                    })
+                    .catch(error => {
+                        //console.log(error.response);
+                        alert("API invoke failed");
+                    });
+            }
         }
-        catch (err) {alert(err)}
+        catch (err) { alert(err) }
 
     }
 
@@ -203,9 +205,11 @@ class App extends Component {
                             this.setState({ visible: false });
 
                         })
-                }).catch(err => { alert("json down load failed after 2 mts waiting");
+                }).catch(err => {
+                    alert("json down load failed after 2 mts waiting");
                     this.setState({ vid_width: "0", img_width: "128", vid_muted: true, visible: false });
-                    console.log(err) });
+                    console.log(err)
+                });
 
                 this.setState({ vid_width: "0", img_width: "128", vid_muted: true, visible: false });
                 console.log(err);
@@ -261,8 +265,11 @@ let promise2 = new Promise((resolve, reject) => {
                 //  alert("value is"+value);});
                 return
             }, // doesn't run
-            error => { alert("upload failed");
-                this.setState({ visible: false }); return } // shows "Error: Whoops!" after 1 second
+            error => {
+                alert("upload failed");
+                this.setState({ visible: false });
+                return
+            } // shows "Error: Whoops!" after 1 second
         );
     }
 
