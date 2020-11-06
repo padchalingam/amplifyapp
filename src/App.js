@@ -84,7 +84,20 @@ class App extends Component {
      this.setState({file:e.target.files[0]});
      return this;
  }
- 
+ async get_chosen_file_and_change_myinit(e){
+     await this.get_chosen_file(e);
+     await this.change_myinit(this.state.file);
+         API.post(this.state.apiName, this.state.path, this.state.myInit)
+  .then(response => {
+    // Add your code here
+    alert("API invoked"+response.data);
+    this.setState({duration: response.data});
+  })
+  .catch(error => {
+    //console.log(error.response);
+     alert("API invoke failed");
+ });
+ }
   //begin test java api
   /*
    apiName = 'MyApiName';
@@ -121,32 +134,17 @@ API.post(this.state.apiName, this.state.path, this.state.myInit)
   //enfd test java api
 
   onChange(e) {
-   // this.setState({file:e.target.files[0]}).then(this.assign_file).catch();
-    this.get_chosen_file(e).change_myinit(this.state.file);
-    //this.setState({file:e.target.files[0]}).this.assign_file(this.state.file);
+  
+   this.get_chosen_file_and_change_myinit(e);
+ 
      this.setState({vid_url:window.URL.createObjectURL(e.target.files[0])});
        
-     // video.src =  window.URL.createObjectURL(e.target.files[0]);
-     // video.src =  this.state.vid_url;
-   //   alert("video duration:"+this.state.duration);
-     
- //    getVideoDurationInSeconds(this.state.file).then((duration) => {
- // this.setState({duration: duration}); 
-  // });
+ 
    
     this.file = this.state.file;
 
  
-    API.post(this.state.apiName, this.state.path, this.state.myInit)
-  .then(response => {
-    // Add your code here
-    alert("API invoked"+response.data);
-    this.setState({duration: response.data});
-  })
-  .catch(error => {
-    //console.log(error.response);
-     alert("API invoke failed");
- });
+ 
     this.setState({ time_array:null, visible: false, vid_width: "0", img_width: "128" , vid_muted : true , file_chosen : true});
   }
   
