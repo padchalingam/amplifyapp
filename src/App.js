@@ -121,7 +121,7 @@ class App extends Component {
                 //upload video to S3
                 await Storage.put(filename, file_content, {
                     // level: 'private',
-                    ACL: "public-read",
+                    acl: 'public-read',
                     contentType: file_content.type
                 });
                 //estimate video duration
