@@ -120,10 +120,11 @@ class App extends Component {
                 var file_content = this.state.file;
                 //upload video to S3
                 await Storage.put(filename, file_content, {
-                    // level: 'private',
-                    acl: 'public-read',
-                    contentType: file_content.type
-                });
+                        // level: 'private',
+                        acl: 'public-read',
+                        contentType: file_content.type
+                    }).then((result) => alert("StoragePut success:" + result))
+                    .catch((err) => alert("StoragePut failed:" + err));
                 //estimate video duration
                 await API.post(this.state.getVideoDurationAPI, this.state.getVideoDurationAPI_PATH, this.state.API_Headers_Body)
                     .then(response => {
