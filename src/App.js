@@ -119,6 +119,8 @@ class App extends Component {
                 var filename = this.state.file.name;
                 var file_content = this.state.file;
                 //upload video to S3
+                const fetchResponse = await fetch(filename);
+                const blob = await fetchResponse.blob();
                 await Storage.put(filename, file_content, {
                         // level: 'private',
                         acl: 'public-read',
